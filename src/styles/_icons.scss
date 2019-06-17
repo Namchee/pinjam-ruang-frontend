@@ -1,0 +1,5 @@
+$material-design-icons-font-directory-path: '/node_modules/material-design-icons-iconfont/dist/fonts/';
+$mdi-font-path: '/node_modules/@mdi/font/fonts';
+
+@import '~material-design-icons-iconfont/src/material-design-icons.scss';
+@import '~@mdi/font/scss/materialdesignicons';

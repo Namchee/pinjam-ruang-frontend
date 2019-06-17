@@ -1,0 +1,31 @@
+@import '~typeface-roboto';
+@import '~typeface-open-sans';
+@import '~typeface-montserrat';
+@import '~typeface-pt-mono';
+
+.has-font-roboto {
+    font-family: 'Roboto',
+        'Helvetica Neue',
+        'Segoe UI',
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif !important;
+}
+
+.has-font-open-sans {
+    font-family: 'Open Sans', 
+        sans-serif !important;
+}
+
+.has-font-montserrat {
+    font-family: 'Montserrat', 
+        sans-serif !important;
+}
+
+.has-font-pt {
+    font-family: 'PT Mono', 
+        'Courier New', 
+        Courier, 
+        monospace !important;
+}

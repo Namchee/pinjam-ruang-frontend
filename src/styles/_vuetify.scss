@@ -1,0 +1,45 @@
+@import '~vuetify-scss/components/_all';
+@import '~vuetify-scss/elements/_blockquote';
+@import '~vuetify-scss/elements/_code';
+@import '~vuetify-scss/elements/_global';
+@import '~vuetify-scss/elements/_headings';
+@import '~vuetify-scss/elements/_lists';
+
+// DO NOT IMPORT THIS!!!
+// @import '~vuetify-scss/elements/_typography';
+
+@import '~vuetify-scss/generic/_all';
+@import '~vuetify-scss/settings/_all';
+@import '~vuetify-scss/tools/_all';
+@import '~vuetify-scss/trumps/_all';
+
+.field-label {
+    font-size: 1rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: .4rem;
+}
+
+.v-input__append-inner {
+    z-index: 1;
+}
+
+.v-text-field--solo {
+    & .v-input__slot {
+        box-shadow: none !important;
+    }
+
+    &.theme--light {
+        & .v-input__slot {
+            border: 1px solid #bdbdbd;
+        }
+
+        &.v-input--is-focused .v-input__slot {
+            box-shadow: 0 0 5px #b9b9b9 !important;
+        }
+    }
+}
+
+.v-input__slot {
+    min-height: 42.5px;
+}

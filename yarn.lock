@@ -889,6 +889,11 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
+"@types/prettier@^1.16.4":
+  version "1.16.4"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.16.4.tgz#5e5e97702cb68498aaba7349b941648daaf2385c"
+  integrity sha512-MG7ExKBo7AQ5UrL1awyYLNinNM/kyXgE4iP4Ul9fB+T7n768Z5Xem8IZeP6Bna0xze8gkDly49Rgge2HOEw4xA==
+
 "@types/q@^1.5.1":
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
@@ -6485,10 +6490,10 @@ vuetify-scss@^1.4.0:
   resolved "https://registry.yarnpkg.com/vuetify-scss/-/vuetify-scss-1.4.0.tgz#4b5cace35403a002c3cdd1b002ad97643e63d7f4"
   integrity sha512-4GFB+/oJzgD6bDI5TX3g5u6HKfcO604CSXs+RlAb+6huo3uoWMIGR725v0xoO8kahDMzdenHuAPIQGM16LkoUA==
 
-vuetify@^1.5.14:
-  version "1.5.14"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.5.14.tgz#ff67d0b8a398be5297da159b6cd1b31f4d2898b8"
-  integrity sha512-7iM+TfghR/wu/Gl+k37lKr0N8Ddr6SxzqHtoK1dIyHgCH6SJRkpaXPw2MC5/FsAg9aUDJbYNWrzSeu5eHw+Q/w==
+vuetify@^1.5.16:
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.5.16.tgz#cc9d0199c389d64d15787ddc85ca47a28225eeee"
+  integrity sha512-yBgOsfurKQkeS+l+rrTQZ2bFk0D9ezjHhkuVM5A/yVzcg62sY2nfYaq/H++uezBWC9WYFrp/5OmSocJQcWn9Qw==
 
 vuex@^3.1.1:
   version "3.1.1"

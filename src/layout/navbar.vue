@@ -10,7 +10,7 @@
           subheading-xs-only
           font-weight-bold"
         >
-        ://ftis-admin/pinjam-ruang
+        pinjam-ruang
         </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
@@ -34,7 +34,7 @@
     </v-toolbar>
     <v-navigation-drawer
       v-model='drawer'
-      absolute
+      fixed
       temporary
     >
       <v-list>
@@ -138,7 +138,7 @@ export default {
           icon: 'assignment',
         },
         {
-          to: 'List',
+          to: '/list',
           caption: 'List',
           mobileCaption: 'List of Acara',
           login: false,

@@ -69,9 +69,31 @@
   padding: 1.5rem;
 }
 
-.pad[data-v-72f70c] {
-  padding-left: 10rem;
-  padding-right: 10rem;
+.wrapper[data-v-ffa381] {
+  max-width: 12.5rem;
+}
+.divider[data-v-ffa381] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.pad-top[data-v-31b32f] {
+  padding-top: 1.8rem;
+}
+#datetime[data-v-31b32f] {
+  margin: 0;
+  padding: 1rem;
+}
+
+.pad .flex[data-v-72f70c] {
+  padding: .5rem;
+}
+@media screen and (max-width: 599px) {
+.pad .flex[data-v-72f70c] {
+    padding: .25rem;
+}
 }
 .form[data-v-72f70c] {
   margin-right: auto;
@@ -86,6 +108,12 @@
 @media screen and (max-width: 599px) {
 .form[data-v-72f70c] {
     width: 70vw;
+}
+}
+
+@media screen and (min-width: 600px) {
+.wrapper .flex[data-v-235215] {
+    padding: 0 16px;
 }
 }
 
@@ -634,6 +662,15 @@ html, body {
 
 body {
   font-family: 'Roboto'; }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type="number"] {
+  text-align: center;
+  -moz-appearance: textfield; }
 
 .has-font-roboto {
   font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; }
@@ -24104,6 +24141,9 @@ video {
 
 .v-input__slot {
   min-height: 42.5px; }
+
+.v-text-field__details {
+  padding: 0 !important; }
 
 
 /*# sourceMappingURL=/src.a2b27638.css.map */

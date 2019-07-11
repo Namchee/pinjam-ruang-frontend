@@ -1,12 +1,12 @@
 <template>
-  <v-app :dark='this.$store.state.dark'>
+  <v-app>
     <router-view></router-view>
   </v-app>
 </template>
 
 <script>
 export default {
-
+  
 }
 </script>
 

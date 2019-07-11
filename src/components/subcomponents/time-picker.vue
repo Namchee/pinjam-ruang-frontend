@@ -2,8 +2,8 @@
   <v-container class='wrapper'>
     <v-layout>
       <v-flex xs5 align-center>
-        <v-layout column align-center class='hour cool'>
-          <v-btn flat icon
+        <v-layout column align-center class='hour'>
+          <v-btn text icon
             @click='incrementHour()'
             @mousedown='plusHour = true' 
             @mouseup='plusHour = false'
@@ -13,15 +13,15 @@
             <v-icon>keyboard_arrow_up</v-icon>
           </v-btn>
           <v-text-field 
-            class='display-2 time' 
+            class="display-2 time pt-0" 
             hide-details 
             type="number"
-            :color='color("background")'
+            color="input"
             v-model='hour'
             @change='testHour'
           >
           </v-text-field>
-          <v-btn flat icon
+          <v-btn text icon
             @click='decrementHour()'
             @mousedown='minusHour = true' 
             @mouseup='minusHour = false'
@@ -36,8 +36,8 @@
         <p class='display-2'>:</p>
       </v-flex>
       <v-flex xs5>
-        <v-layout column align-center class='minute cool'>
-          <v-btn flat icon
+        <v-layout column align-center class='minute'>
+          <v-btn text icon
             @click='incrementMinute()'
             @mousedown='plusMinute = true' 
             @mouseup='plusMinute = false'
@@ -47,15 +47,15 @@
             <v-icon>keyboard_arrow_up</v-icon>
           </v-btn>
           <v-text-field
-            class='display-2 time' 
+            class='display-2 time pt-0' 
             hide-details
             type="number"
-            :color='color("background")'
+            color="input"
             v-model='minute'
             @change='testMinute'
           >
           </v-text-field>
-          <v-btn flat icon
+          <v-btn text icon
             @click='decrementMinute()'
             @mousedown='minusMinute = true' 
             @mouseup='minusMinute = false'
@@ -71,8 +71,6 @@
 </template>
 
 <script>
-import colorMixin from './../../mixins/color';
-
 export default {
   props: {
     value: {
@@ -110,10 +108,6 @@ export default {
       default: 1,
     },
   },
-
-  mixins: [
-    colorMixin,
-  ],
 
   data: function() {
     return {
@@ -181,6 +175,10 @@ export default {
   },
 
   methods: {
+    test() {
+      console.log('test');
+    },
+
     clear: function() {
       this.hour = null;
       this.minute = null;

@@ -3,11 +3,12 @@
     <v-menu
       v-model='open'
       :close-on-content-click='false'
-      lazy
       transition="slide-y-transition"
       :nudge-bottom='45'
+      :nudge-left='12.5'
       class='pa-0'
       v-if='!show'
+      allow-overflow
     >
       <template v-slot:activator='{ on }'>
         <v-text-field
@@ -20,13 +21,14 @@
           readonly
           v-on='on'
           solo
+          color="input"
           :rules='rules'
         ></v-text-field>
       </template>
       <div>
         <v-layout column>
           <v-flex class="primary pa-1">
-            <p id="datetime" class="display-1">{{ display ? display : '&nbsp;' }}</p>
+            <p id="datetime" class="display-1 white--text">{{ display ? display : '&nbsp;' }}</p>
           </v-flex>
           <v-layout row>
             <v-flex>
@@ -43,7 +45,7 @@
               </v-date-picker>
             </v-flex>
             <v-flex :style='{ 
-              "background": $store.state.dark ? "#424242" : "white" 
+              "background": $vuetify.theme.dark ? "#424242" : "white" 
             }'
             class='pad-top'
             >
@@ -81,54 +83,55 @@
         ></v-text-field>
       </template>
       <v-card>
-          <v-layout column>
-            <v-flex class="primary pa-1">
-              <p id="datetime" class="display-1 text-xs-center">
-                <span v-html='mobileDisplay'></span>
-              </p>
-            </v-flex>
-            <v-flex>
-              <v-tabs
-                centered
-                grow
-              >
-                <v-tab>
-                  <v-icon>
-                    event
-                  </v-icon>
-                </v-tab>
-                <v-tab-item>
-                  <v-date-picker
-                    scrollable
-                    no-title
-                    v-model='date'
-                    color="primary"
-                    locale="id"
-                    full-width
-                    :min='min ? min : undefined'
-                    :max='max ? max : undefined'
-                  >
-                  </v-date-picker>
-                </v-tab-item>
-                <v-tab>
-                  <v-icon>
-                    timer
-                  </v-icon>
-                </v-tab>
-                <v-tab-item>
-                  <timepicker 
-                    ref='time'
-                    v-model='time'
-                    :minHour='minHour'
-                    :minMinute='minMinute'
-                    :maxHour='maxHour'
-                    :maxMinute='maxMinute'
-                  >
-                  </timepicker>
-                </v-tab-item>
-              </v-tabs>
-            </v-flex>
-          </v-layout>
+        <v-layout column>
+          <v-flex class="primary pa-1">
+            <p id="datetime" class="display-1 text-xs-center">
+              <span class="white--text" v-html='mobileDisplay'></span>
+            </p>
+          </v-flex>
+          <v-flex>
+            <v-tabs
+              centered
+              grow
+            >
+              <v-tab>
+                <v-icon>
+                  event
+                </v-icon>
+              </v-tab>
+              <v-tab-item eager>
+                <v-date-picker
+                  scrollable
+                  no-title
+                  v-model='date'
+                  color="primary"
+                  locale="id"
+                  full-width
+                  :min='min ? min : undefined'
+                  :max='max ? max : undefined'
+                  :show-current='false'
+                >
+                </v-date-picker>
+              </v-tab-item>
+              <v-tab>
+                <v-icon>
+                  timer
+                </v-icon>
+              </v-tab>
+              <v-tab-item eager>
+                <timepicker 
+                  ref='time'
+                  v-model='time'
+                  :minHour='minHour'
+                  :minMinute='minMinute'
+                  :maxHour='maxHour'
+                  :maxMinute='maxMinute'
+                >
+                </timepicker>
+              </v-tab-item>
+            </v-tabs>
+          </v-flex>
+        </v-layout>
       </v-card>
     </v-dialog>
   </div>

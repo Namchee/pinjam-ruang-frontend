@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .content {
-  padding-top: 10vh;
+  //padding-top: 10vh;
   overflow: auto;
 }
 

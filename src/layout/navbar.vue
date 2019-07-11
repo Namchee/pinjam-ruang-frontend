@@ -1,13 +1,18 @@
 <template>
   <div>
-    <v-toolbar :color='color("accent")' :style='`height:${height}`' fixed app>
-      <v-toolbar-side-icon 
+    <v-app-bar
+      fixed
+      :color='$vuetify.theme.dark ? "" : "primary"'
+      dark
+      app
+    >
+      <v-app-bar-nav-icon
         class="hidden-sm-and-up" 
-        @click='drawer = !drawer'>
-      </v-toolbar-side-icon>
+        @click='drawer = !drawer'
+      >
+      </v-app-bar-nav-icon>
       <v-toolbar-title 
-        class="has-font-pt 
-          subheading-xs-only
+        class="has-font-pt
           font-weight-bold"
         >
         pinjam-ruang
@@ -19,19 +24,20 @@
           class='btn__nav-link' 
           :ripple='false' 
           :key='link.to'
-          flat
+          text
           :to='link.to'
         >
         {{ link.caption }}
         </v-btn>
       </v-toolbar-items>
       <v-btn
-        outline 
-        class='hidden-xs-only'
+        outlined
+        class='hidden-xs-only ml-3'
       >
         {{ user ? 'Logout' : 'Login' }}
       </v-btn>
-    </v-toolbar>
+    </v-app-bar>
+
     <v-navigation-drawer
       v-model='drawer'
       fixed
@@ -175,7 +181,7 @@ export default {
 
 <style lang="scss" scoped>
 .v-toolbar__title:not(:first-child) {
-    margin-left: .5rem;
+    margin-left: .2rem;
 }
 
 .v-btn.btn__nav-link {
@@ -199,7 +205,7 @@ export default {
         }
         
         &::after {
-            width: 80%;
+            width: 75%;
         }
     }
 

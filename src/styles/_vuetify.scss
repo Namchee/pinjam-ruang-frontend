@@ -1,17 +1,4 @@
-@import '~vuetify-scss/components/_all';
-@import '~vuetify-scss/elements/_blockquote';
-@import '~vuetify-scss/elements/_code';
-@import '~vuetify-scss/elements/_global';
-@import '~vuetify-scss/elements/_headings';
-@import '~vuetify-scss/elements/_lists';
-
-// DO NOT IMPORT THIS!!!
-// @import '~vuetify-scss/elements/_typography';
-
-@import '~vuetify-scss/generic/_all';
-@import '~vuetify-scss/settings/_all';
-@import '~vuetify-scss/tools/_all';
-@import '~vuetify-scss/trumps/_all';
+@import '~vuetify/dist/vuetify.min.css';
 
 .field-label {
     font-size: 1rem;
@@ -46,4 +33,10 @@
 
 .v-text-field__details {
     padding: 0 !important;
+}
+
+.v-btn.btn__nav-link {
+    &:before {
+        background-color: unset;
+    }
 }

@@ -1,15 +1,26 @@
-export default {
-  'primary': '#1976d2',
-  'primary-dark': '#1a2930',
-  'secondary': '#ffa726',
-  'secondary-dark': '#1f0033',
-  'danger': '#b00020',
-  'danger-dark': '#f44336',
-  'info': '#209CEE',
-  'success': '#23D160',
-  'warning': '#ffbb33',
-  'background': '#212121',
-  'background-dark': '#f2f1ef',
-  'accent-dark': '#363636',
-  'accent': '#f5f5f5',
+export const theme = {
+  dark: true,
+  themes: {
+    light: {
+      'primary': '#13abea',
+      'secondary': '#00b9ae',
+      'tertiary': '#02182b',
+      'danger': '#b00020',
+      'info': '#2196f3',
+      'success': '#00c853',
+      'warning': '#fdd835',
+      'input': '#212121',
+    },
+
+    dark: {
+      'primary': '#673ab7',
+      'secondary': '#212121',
+      'tertiary': '#212121',
+      'danger': '#f44336',
+      'info': '#1976d2',
+      'success': '#4caf50',
+      'warning': '#fbc02d',
+      'input': '#fafafa',
+    },
+  },
 };

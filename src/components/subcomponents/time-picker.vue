@@ -2,7 +2,7 @@
   <v-container class='wrapper'>
     <v-layout>
       <v-flex xs5 align-center>
-        <v-layout column align-center class='hour'>
+        <v-layout column align-center @wheel='hourWheel'>
           <v-btn text icon
             @click='incrementHour()'
             @mousedown='plusHour = true' 
@@ -13,7 +13,7 @@
             <v-icon>keyboard_arrow_up</v-icon>
           </v-btn>
           <v-text-field 
-            class="display-2 time pt-0" 
+            class="display-2 time pt-0 mb-2" 
             hide-details 
             type="number"
             color="input"
@@ -36,7 +36,7 @@
         <p class='display-2'>:</p>
       </v-flex>
       <v-flex xs5>
-        <v-layout column align-center class='minute'>
+        <v-layout column align-center @wheel='minuteWheel'>
           <v-btn text icon
             @click='incrementMinute()'
             @mousedown='plusMinute = true' 
@@ -47,7 +47,7 @@
             <v-icon>keyboard_arrow_up</v-icon>
           </v-btn>
           <v-text-field
-            class='display-2 time pt-0' 
+            class='display-2 time pt-0 mb-2' 
             hide-details
             type="number"
             color="input"
@@ -128,36 +128,9 @@ export default {
     requestAnimationFrame(this.watcher);
 
     if (this.value && this.value instanceof Date) {
-      this.hour = value.getHours();
-      this.minute = value.getMinutes();
+      this.hour = this.value.getHours();
+      this.minute = this.value.getMinutes();
     } 
-  },
-
-  mounted: function() {
-    const hour = document.querySelector('.hour');
-    const minute = document.querySelector('.minute');
-
-    hour.addEventListener('wheel', (e) => {
-      e.preventDefault();
-
-      const wheelDown = this.determineScrollDirection(e);
-      if (wheelDown) {
-        this.decrementHour();
-      } else {
-        this.incrementHour();
-      }
-    });
-
-    minute.addEventListener('wheel', (e) => {
-      e.preventDefault();
-
-      const wheelDown = this.determineScrollDirection(e);
-      if (wheelDown) {
-        this.decrementMinute();
-      } else {
-        this.incrementMinute();
-      }
-    });
   },
 
   watch: {
@@ -175,8 +148,26 @@ export default {
   },
 
   methods: {
-    test() {
-      console.log('test');
+    hourWheel: function(e) {
+      e.preventDefault();
+      const dir = e.deltaY;
+
+      if (dir < 0) {
+        this.incrementHour();
+      } else if (dir > 0) {
+        this.decrementHour();
+      }
+    },
+
+    minuteWheel: function(e) {
+      e.preventDefault();
+      const dir = e.deltaY;
+
+      if (dir < 0) {
+        this.incrementMinute();
+      } else if (dir > 0) {
+        this.decrementMinute();
+      }
     },
 
     clear: function() {
@@ -189,31 +180,24 @@ export default {
       if (time < this.next) {
         return;
       }
+
       this.next = time + this.delay;
+
       if (this.plusHour) {
         this.incrementHour();
       }
+
       if (this.minusHour) {
         this.decrementHour();
       }
+
       if (this.plusMinute) {
         this.incrementMinute();
       }
+
       if (this.minusMinute) {
         this.decrementMinute();
       }
-    },
-
-    determineScrollDirection: function(e) {
-      let delta;
-
-      if (e.wheelDelta) {
-        delta = e.wheelDelta;
-      } else {
-        delta = -1 * e.deltaY;
-      }
-
-      return delta < 0;
     },
 
     setDefaultHour: function() {

@@ -1,126 +1,87 @@
 <template>
   <v-container fluid class="wrapper">
-    <v-layout row class="divider">
-      <v-flex xs12 md8>
-        <v-form class="form" v-model="form">
-          <v-layout row wrap>
-            <v-flex xs12 class="display-1 has-font-open-sans mb-4">
-              Formulir Acara
-            </v-flex>
-            <v-flex xs12 sm6>
-              <label for="room" class="field-label">
-                Ruangan
-                <span :style='textColor("danger")'>*</span>
-              </label>
-              <v-select
-                id="room"
-                :items="roomList"
-                color="info"
-                v-model="room"
-                solo
-                :rules="roomRules"
-              ></v-select>
-            </v-flex>
-            <v-flex sm6 class="hidden-xs-only"></v-flex>
-            <v-flex xs12 sm6>
-              <label @click="$refs.startTime.focus()" class="field-label">
-                Waktu Mulai
-                <span :style='textColor("danger")'>*</span>
-              </label>
-              <datetimepicker
-                ref="startTime"
-                v-model="startTime"
-                :min="new Date().toISOString()"
-                :max="endTime ? endTime.toISOString() : undefined"
-                clearable
-                :rules="startTimeRules"
-              ></datetimepicker>
-            </v-flex>
-            <v-flex xs12 sm6>
-              <label @click="$refs.endTime.focus()" class="field-label">
-                Waktu Selesai
-                <span :style='textColor("danger")'>*</span>
-              </label>
-              <datetimepicker
-                :min="startTime ? startTime.toISOString() : new Date().toISOString()"
-                ref="endTime"
-                v-model="endTime"
-                clearable
-                :rules="endTimeRules"
-              ></datetimepicker>
-            </v-flex>
-            <v-flex xs12>
-              <p>
-                Keterangan:
-                <template
-                  v-if="avail === 0"
-                  :style='textColor("danger")'
-                >Jadwal yang diajukan bentrok dengan acara lain</template>
-                <template
-                  v-else-if="avail === 1"
-                  :style='textColor("success")'
-                >Jadwal yang diajukan tersedia untuk digunakan</template>
-                <template
-                  v-else-if="avail === 2"
-                  :style='textColor("warning")'
-                >Jadwal yang diajukan tidak valid, mohon periksa kembali masukan anda</template>
-              </p>
-            </v-flex>
-            <v-flex xs12>
-              <v-divider></v-divider>
-            </v-flex>
-            <v-flex xs12>
-              <label for="name" class="field-label">
-                Nama Acara
-                <span :style='textColor("danger")'>*</span>
-              </label>
-              <v-text-field 
-                id="name" 
-                solo 
-                v-model="name" 
-                counter="50" 
-                :rules="nameRules"></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <label for="desc" class="field-label">
-                Deskripsi Acara
-                <span :style='textColor("danger")'>*</span>
-              </label>
-              <v-textarea id="desc" solo v-model="desc" counter="100" :rules="descRules"></v-textarea>
-            </v-flex>
-            <v-flex xs12>
-              <v-btn color="primary">Submit</v-btn>
-            </v-flex>
-          </v-layout>
-        </v-form>
-      </v-flex>
-      <v-flex md4 class="hidden-xs-only sticky-container">
-        <v-card raised class="pa-2 sticky">
-          <v-card-title class="disclaimer-title">
-            <h1 class="headline 
-              has-font-open-sans 
-              text-uppercase 
-              mb-4">
-              Disclaimer
-            </h1>
-          </v-card-title>
-          <v-card-text>
-            <ol>
-              <li>
-                Pastikan bahwa jadwal yang diajukan tidak bentrok dengan jadwal kelas
-              </li>
-            </ol>
-            <br>
-
-            <p :style='textColor("warning")'>
-              Apabila acara yang diajukan melanggar aturan diatas,
-              administrator berhak untuk membatalkan acara secara
-              sepihak tanpa pemberitahuan terlebih dahulu
-            </p>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
+    <v-form class="form" v-model='form'>
+      <v-layout row wrap>
+        <v-flex xs12 class="mb-4">
+          <h1 class="display-1 has-font-open-sans text-xs-center">
+            Formulir Acara
+          </h1>
+        </v-flex>
+        <v-flex xs12 sm6>
+          <label for="room" class="field-label">
+            Ruangan<span :style='textColor("danger")'>*</span>
+          </label>
+          <v-select id="room" 
+            :items='roomList' 
+            color="info" 
+            v-model='room' 
+            solo 
+            :rules='roomRules'
+            ></v-select>
+        </v-flex>
+        <v-flex sm6 class="hidden-xs-only"></v-flex>
+        <v-flex xs12 sm6>
+          <label @click='$refs.startTime.focus()' class="field-label">
+            Waktu Mulai<span :style='textColor("danger")'>*</span>
+          </label>
+          <datetimepicker
+            ref="startTime"
+            v-model='startTime'
+            :min='new Date()'
+            :max='endTime'
+            clearable
+            :rules='startTimeRules'
+          ></datetimepicker>
+        </v-flex>
+        <v-flex xs12 sm6>
+          <label @click='$refs.endTime.focus()' class="field-label">
+            Waktu Selesai<span :style='textColor("danger")'>*</span>
+          </label>
+          <datetimepicker
+            :min='startTime ? startTime : new Date()'
+            ref="endTime"
+            v-model='endTime'
+            clearable
+            :rules='endTimeRules'
+          ></datetimepicker>
+        </v-flex>
+        <v-flex xs12>
+          <p>
+            Keterangan:
+            <template
+              v-if='avail === 0'
+              :style='textColor("danger")'
+            >Jadwal yang diajukan bentrok dengan acara lain</template>
+            <template
+              v-else-if='avail === 1'
+              :style='textColor("success")'
+            >Jadwal yang diajukan tersedia untuk digunakan</template>
+            <template
+              v-else-if='avail === 2'
+              :style='textColor("warning")'
+            >Jadwal yang diajukan tidak valid, mohon periksa kembali masukan anda</template>
+          </p>
+        </v-flex>
+        <v-flex xs12>
+          <v-divider></v-divider>
+        </v-flex>
+        <v-flex xs12>
+          <label for="name" class="field-label">
+            Nama Acara<span :style='textColor("danger")'>*</span>
+          </label>
+          <v-text-field id="name" solo v-model='name' counter="50" :rules='nameRules'></v-text-field>
+        </v-flex>
+        <v-flex xs12>
+          <label for="desc" class="field-label">
+            Deskripsi Acara<span :style='textColor("danger")'>*</span>
+          </label>
+          <v-textarea id="desc" solo v-model='desc' counter="100" :rules='descRules'></v-textarea>
+        </v-flex>
+        <v-flex xs12>
+          <v-btn color="primary">Submit</v-btn>
+        </v-flex>
+      </v-layout>
+    </v-form>
   </v-container>
 </template>
 
@@ -148,7 +109,7 @@ export default {
       endTime: null,
       name: "",
       desc: "",
-      avail: null,
+      avail: 0,
 
       startTimeRules: [v => !!v || "Waktu mulai harus diisi"],
       endTimeRules: [v => !!v || "Waktu selesai harus diisi"],
@@ -188,32 +149,60 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  & > .layout > .flex {
-    padding: 2.25rem;
+  padding: 4rem 17.5rem;
+
+  & > .form > .layout > .flex {
+    padding: .4rem 2rem;
   }
 }
 
-.form {
-  .flex {
-    padding: .75rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+@media screen and (max-width: 599px) {
+  .wrapper {
+    padding: 2rem .75rem;
+
+    & > .form > .layout > .flex {
+      padding: .3rem 1.25rem;
+    }
   }
 }
 
-.sticky-container {
-  border: 2px solid;
-  position: relative;
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .wrapper {
+    padding: 2rem 5rem;
+
+    & > .form > .layout > .flex {
+      padding: .3rem 1.25rem;
+    }
+  }
 }
 
-.sticky {
-  position: sticky;
-  top: 0;
-  display: block;
-  z-index: 10000;
+@media screen and (min-width: 960px) and (max-width: 1263px) {
+  .wrapper {
+    padding: 3rem 10rem; 
+
+    & > .form > .layout > .flex {
+      padding: .3rem 1.5rem;
+    }
+  }
 }
 
-.disclaimer-title {
-  justify-content: center;
+@media screen and (min-width: 1905px) {
+  .wrapper {
+    padding: 4rem 30rem;
+
+    & > .form > .layout > .flex {
+      padding: .75rem 2.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .wrapper {
+    padding: 5rem 40rem;
+
+    & > .form > .layout > .flex {
+      padding: 1rem 2.5rem;
+    }
+  }
 }
 </style>

@@ -38,8 +38,8 @@
                 v-model='date'
                 color="primary"
                 locale="id"
-                :min='min ? min : undefined'
-                :max='max ? max : undefined'
+                :min='minDate'
+                :max='maxDate'
                 :show-current='false'
               >
               </v-date-picker>
@@ -107,8 +107,8 @@
                   color="primary"
                   locale="id"
                   full-width
-                  :min='min ? min : undefined'
-                  :max='max ? max : undefined'
+                  :min='minDate'
+                  :max='maxDate'
                   :show-current='false'
                 >
                 </v-date-picker>
@@ -161,12 +161,12 @@ export default {
     },
 
     min: {
-      type: String,
+      type: Date,
       default: null,
     },
 
     max: {
-      type: String,
+      type: Date,
       default: null,
     },
 
@@ -206,7 +206,7 @@ export default {
   },
 
   created: function() {
-    if (this.value) {
+    if (this.value && this.value instanceof Date) {
       this.date = format(this.value, 'YYYY-MM-D');
       this.time = `${this.value.getHours()}:${this.value.getMinutes()}`;
     }
@@ -217,9 +217,25 @@ export default {
       return window.innerWidth < 600;
     },
 
+    minDate: function() {
+      if (this.min && this.min instanceof Date) {
+        const date = this.min;
+        date.setDate(date.getDate() - 1);
+        return date.toISOString();
+      }
+
+      return null;
+    },
+
+    maxDate: function() {
+      return this.max && this.max instanceof Date ?
+        this.max.toISOString() :
+        null;
+    },
+
     formattedDate: function() {
       return this.value ? 
-        format(this.value, 'dddd, D MMMM YYYY --- HH:mm', { locale: id }) : 
+        format(this.value, 'dddd, D MMMM YYYY -- HH:mm', { locale: id }) : 
         '';
     },
 

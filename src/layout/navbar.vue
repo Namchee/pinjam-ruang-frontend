@@ -3,11 +3,12 @@
     <v-app-bar
       fixed
       :color='$vuetify.theme.dark ? "" : "primary"'
+      :hide-on-scroll='mobileNav'
       dark
       app
     >
       <v-app-bar-nav-icon
-        class="hidden-sm-and-up" 
+        class="hidden-md-and-up" 
         @click='drawer = !drawer'
       >
       </v-app-bar-nav-icon>
@@ -18,7 +19,9 @@
         pinjam-ruang
         </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only">
+      <v-toolbar-items class="nav-item--desktop
+        hidden-sm-and-down"
+      >
         <v-btn 
           v-for='link in links'
           class='btn__nav-link' 
@@ -32,75 +35,80 @@
       </v-toolbar-items>
       <v-btn
         outlined
-        class='hidden-xs-only ml-3'
+        class='hidden-sm-and-down ml-3'
       >
         {{ user ? 'Logout' : 'Login' }}
       </v-btn>
     </v-app-bar>
 
     <v-navigation-drawer
+      color="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);"
       v-model='drawer'
       fixed
       temporary
     >
       <v-list>
         <template v-if='user'>
-          <v-list-tile two-line avatar v-if='user'>
-            <v-list-tile-content>
-              <v-list-tile-title class="title">
+          <v-list-item two-line v-if='user'>
+            <v-list-item-content>
+              <v-list-item-title class="title">
                 {{ userName }}
-              </v-list-tile-title>
-              <v-list-tile-sub-title>
+              </v-list-item-title>
+              <v-list-item-subtitle>
                 {{ userIsAdmin ? 'Administrator' : 'Regular User' }}
-              </v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
         </template>
         <template v-else>
-          <v-list-tile avatar>
-            <v-list-tile-avatar>
+          <v-list-item >
+            <v-list-item-avatar>
               <v-icon>
                 mdi-login
               </v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content class="title">
-              Login
-            </v-list-tile-content>
-          </v-list-tile>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>
+                Login
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </template>
 
         <v-divider></v-divider>
 
-        <v-list-tile
+        <v-list-item
           v-for='link in links'
           :key='link.to'
-          avatar
+          :to='link.to'
         >
-          <v-list-tile-avatar>
+          <v-list-item-avatar>
             <v-icon>
               {{ link.icon }}
             </v-icon>
-          </v-list-tile-avatar>
+          </v-list-item-avatar>
 
-          <v-list-tile-content>
-            <v-list-tile-title>
+          <v-list-item-content>
+            <v-list-item-title>
               {{ link.mobileCaption }}
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
         <template v-if='user'>
           <v-divider></v-divider>
-          <v-list-tile avatar>
-            <v-list-tile-avatar>
+          <v-list-item>
+            <v-list-item-avatar>
               <v-icon>
                 mdi-logout
               </v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              Logout
-            </v-list-tile-content>
-          </v-list-tile>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>
+                Logout
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </template>
       </v-list>
 
@@ -157,13 +165,6 @@ export default {
           login: true,
           icon: 'gavel',
         },
-        {
-          to: 'Settings',
-          caption: 'Settings',
-          mobileCaption: 'Profile Settings',
-          login: true,
-          icon: 'settings',
-        }
       ]
     };  
   },
@@ -174,6 +175,10 @@ export default {
 
     links: function() {
       return this.links_raw.filter(link => link.login ? this.user : true);
+    },
+
+    mobileNav: function() {
+      return window.innerWidth < 600;
     }
   },
 };
@@ -218,5 +223,17 @@ export default {
             width: 100%;
         }
     }
+}
+
+.nav-item--desktop {
+  &.v-toolbar__items {
+    & > * {
+      width: 7rem;
+    }
+  }
+}
+
+.v-list-item--active.theme--dark {
+  color: hsl(0, 0, 96%); 
 }
 </style>

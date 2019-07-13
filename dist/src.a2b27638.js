@@ -8956,17 +8956,14 @@ var __assign = undefined && undefined.__assign || function () {
     },
     computed: {
         isDark: function isDark() {
-            if (this.dark != null || this.light != null) {
-                return _mixins_themeable__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.isDark.call(this);
-            }
             return this.$vuetify.theme.dark;
         }
     },
     render: function render(h) {
-        var wrapper = h('div', { staticClass: 'application--wrap' }, this.$slots.default);
+        var wrapper = h('div', { staticClass: 'v-application--wrap' }, this.$slots.default);
         return h('div', {
-            staticClass: 'application',
-            class: __assign({ 'application--is-rtl': this.$vuetify.rtl, 'application--is-ltr': !this.$vuetify.rtl }, this.themeClasses),
+            staticClass: 'v-application',
+            class: __assign({ 'v-application--is-rtl': this.$vuetify.rtl, 'v-application--is-ltr': !this.$vuetify.rtl }, this.themeClasses),
             attrs: { 'data-app': true },
             domProps: { id: this.id }
         }, [wrapper]);
@@ -10565,7 +10562,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_V
     },
     computed: {
         classes: function classes() {
-            return __assign({ 'v-btn': true }, _mixins_routable__WEBPACK_IMPORTED_MODULE_6__["default"].options.computed.classes.call(this), { 'v-btn--absolute': this.absolute, 'v-btn--block': this.block, 'v-btn--bottom': this.bottom, 'v-btn--contained': this.contained, 'v-btn--depressed': this.depressed || this.outlined, 'v-btn--disabled': this.disabled, 'v-btn--fab': this.fab || this.icon, 'v-btn--fixed': this.fixed, 'v-btn--flat': this.isFlat, 'v-btn--icon': this.icon, 'v-btn--left': this.left, 'v-btn--loading': this.loading, 'v-btn--outlined': this.outlined, 'v-btn--right': this.right, 'v-btn--round': this.isRound, 'v-btn--rounded': this.rounded, 'v-btn--router': this.to, 'v-btn--text': this.text, 'v-btn--top': this.top }, this.themeClasses, this.groupClasses, this.elevationClasses, this.sizeableClasses);
+            return __assign({ 'v-btn': true }, _mixins_routable__WEBPACK_IMPORTED_MODULE_6__["default"].options.computed.classes.call(this), { 'v-btn--absolute': this.absolute, 'v-btn--block': this.block, 'v-btn--bottom': this.bottom, 'v-btn--contained': this.contained, 'v-btn--depressed': this.depressed || this.outlined, 'v-btn--disabled': this.disabled, 'v-btn--fab': this.fab || this.icon, 'v-btn--fixed': this.fixed, 'v-btn--flat': this.isFlat, 'v-btn--icon': this.icon, 'v-btn--left': this.left, 'v-btn--loading': this.loading, 'v-btn--outlined': this.outlined, 'v-btn--right': this.right, 'v-btn--round': this.isRound, 'v-btn--rounded': this.rounded, 'v-btn--router': this.to, 'v-btn--text': this.text, 'v-btn--tile': this.tile, 'v-btn--top': this.top }, this.themeClasses, this.groupClasses, this.elevationClasses, this.sizeableClasses);
         },
         contained: function contained() {
             return Boolean(!this.isFlat && !this.depressed &&
@@ -13145,8 +13142,6 @@ var __assign = undefined && undefined.__assign || function () {
         },
         hideDelimiters: Boolean,
         hideDelimiterBackground: Boolean,
-        progress: Boolean,
-        progressColor: String,
         interval: {
             type: [Number, String],
             default: 6000,
@@ -13154,11 +13149,13 @@ var __assign = undefined && undefined.__assign || function () {
                 return value > 0;
             }
         },
-        showArrows: {
+        mandatory: {
             type: Boolean,
             default: true
         },
-        mandatory: {
+        progress: Boolean,
+        progressColor: String,
+        showArrows: {
             type: Boolean,
             default: true
         },
@@ -13882,9 +13879,7 @@ var __assign = undefined && undefined.__assign || function () {
         };
     },
     props: {
-        choice: Boolean,
-        column: Boolean,
-        outlined: Boolean
+        column: Boolean
     },
     computed: {
         classes: function classes() {
@@ -15820,10 +15815,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../VData */ "./src/components/VData/index.ts");
 /* harmony import */ var _VDataFooter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VDataFooter */ "./src/components/VDataIterator/VDataFooter.ts");
-/* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-/* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
-/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
+/* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
+/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
 var __assign = undefined && undefined.__assign || function () {
     __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15863,12 +15857,11 @@ var __read = undefined && undefined.__read || function (o, n) {
 
 // Mixins
 
-
 // Helpers
 
 
 /* @vue/component */
-/* harmony default export */ __webpack_exports__["default"] = (Object(_util_mixins__WEBPACK_IMPORTED_MODULE_2__["default"])(_mixins_themeable__WEBPACK_IMPORTED_MODULE_3__["default"]).extend({
+/* harmony default export */ __webpack_exports__["default"] = (_mixins_themeable__WEBPACK_IMPORTED_MODULE_2__["default"].extend({
     name: 'v-data-iterator',
     props: __assign({}, _VData__WEBPACK_IMPORTED_MODULE_0__["VData"].options.props, { itemKey: {
             type: String,
@@ -15919,21 +15912,21 @@ var __read = undefined && undefined.__read || function (o, n) {
             handler: function handler(value) {
                 var _this = this;
                 this.selection = value.reduce(function (selection, item) {
-                    selection[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(item, _this.itemKey)] = item;
+                    selection[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(item, _this.itemKey)] = item;
                     return selection;
                 }, {});
             },
             immediate: true
         },
         selection: function selection(value, old) {
-            if (Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["deepEqual"])(Object.keys(value), Object.keys(old))) return;
+            if (Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["deepEqual"])(Object.keys(value), Object.keys(old))) return;
             this.$emit('input', Object.values(value));
         },
         expanded: {
             handler: function handler(value) {
                 var _this = this;
                 this.expansion = value.reduce(function (expansion, item) {
-                    expansion[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(item, _this.itemKey)] = true;
+                    expansion[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(item, _this.itemKey)] = true;
                     return expansion;
                 }, {});
             },
@@ -15941,12 +15934,12 @@ var __read = undefined && undefined.__read || function (o, n) {
         },
         expansion: function expansion(value, old) {
             var _this = this;
-            if (Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["deepEqual"])(value, old)) return;
+            if (Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["deepEqual"])(value, old)) return;
             var keys = Object.keys(value).filter(function (k) {
                 return value[k];
             });
             var expanded = !keys.length ? [] : this.items.filter(function (i) {
-                return keys.includes(String(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(i, _this.itemKey)));
+                return keys.includes(String(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(i, _this.itemKey)));
             });
             this.$emit('update:expanded', expanded);
         }
@@ -15959,12 +15952,12 @@ var __read = undefined && undefined.__read || function (o, n) {
             var _b = __read(_a, 2),
                 original = _b[0],
                 replacement = _b[1];
-            if (_this.$attrs.hasOwnProperty(original)) Object(_util_console__WEBPACK_IMPORTED_MODULE_5__["breaking"])(original, replacement, _this);
+            if (_this.$attrs.hasOwnProperty(original)) Object(_util_console__WEBPACK_IMPORTED_MODULE_4__["breaking"])(original, replacement, _this);
         });
         var removedProps = ['expand', 'content-class', 'content-props', 'content-tag'];
         /* istanbul ignore next */
         removedProps.forEach(function (prop) {
-            if (_this.$attrs.hasOwnProperty(prop)) Object(_util_console__WEBPACK_IMPORTED_MODULE_5__["removed"])(prop);
+            if (_this.$attrs.hasOwnProperty(prop)) Object(_util_console__WEBPACK_IMPORTED_MODULE_4__["removed"])(prop);
         });
     },
     methods: {
@@ -15972,13 +15965,13 @@ var __read = undefined && undefined.__read || function (o, n) {
             var _this = this;
             var selection = Object.assign({}, this.selection);
             this.internalCurrentItems.forEach(function (item) {
-                var key = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(item, _this.itemKey);
+                var key = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(item, _this.itemKey);
                 if (value) selection[key] = item;else delete selection[key];
             });
             this.selection = selection;
         },
         isSelected: function isSelected(item) {
-            return !!this.selection[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(item, this.itemKey)] || false;
+            return !!this.selection[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(item, this.itemKey)] || false;
         },
         select: function select(item, value, emit) {
             if (value === void 0) {
@@ -15988,20 +15981,20 @@ var __read = undefined && undefined.__read || function (o, n) {
                 emit = true;
             }
             var selection = this.singleSelect ? {} : Object.assign({}, this.selection);
-            var key = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(item, this.itemKey);
+            var key = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(item, this.itemKey);
             if (value) selection[key] = item;else delete selection[key];
             this.selection = selection;
             emit && this.$emit('item-selected', { item: item, value: value });
         },
         isExpanded: function isExpanded(item) {
-            return this.expansion[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(item, this.itemKey)] || false;
+            return this.expansion[Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(item, this.itemKey)] || false;
         },
         expand: function expand(item, value) {
             if (value === void 0) {
                 value = true;
             }
             var expansion = this.singleExpand ? {} : Object.assign({}, this.expansion);
-            var key = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(item, this.itemKey);
+            var key = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getObjectValueByPath"])(item, this.itemKey);
             if (value) expansion[key] = true;else delete expansion[key];
             this.expansion = expansion;
             this.$emit('item-expanded', { item: item, value: value });
@@ -16073,14 +16066,14 @@ var __read = undefined && undefined.__read || function (o, n) {
                     }
                 }
             };
-            var scopedSlots = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getPrefixedScopedSlots"])('footer.', this.$scopedSlots);
+            var scopedSlots = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getPrefixedScopedSlots"])('footer.', this.$scopedSlots);
             return this.$createElement(_VDataFooter__WEBPACK_IMPORTED_MODULE_1__["default"], __assign({ scopedSlots: scopedSlots }, data));
         },
         genDefaultScopedSlot: function genDefaultScopedSlot(props) {
             var outerProps = __assign({}, props, { someItems: this.someItems, everyItem: this.everyItem, toggleSelectAll: this.toggleSelectAll });
             return this.$createElement('div', {
                 staticClass: 'v-data-iterator'
-            }, [Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getSlot"])(this, 'header', outerProps, true), this.genItems(props), this.genFooter(props), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getSlot"])(this, 'footer', outerProps, true)]);
+            }, [Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getSlot"])(this, 'header', outerProps, true), this.genItems(props), this.genFooter(props), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["getSlot"])(this, 'footer', outerProps, true)]);
         }
     },
     render: function render() {
@@ -16089,7 +16082,7 @@ var __read = undefined && undefined.__read || function (o, n) {
             props: this.$props,
             on: {
                 'update:options': function updateOptions(v, old) {
-                    return !Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["deepEqual"])(v, old) && _this.$emit('update:options', v);
+                    return !Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["deepEqual"])(v, old) && _this.$emit('update:options', v);
                 },
                 'update:page': function updatePage(v) {
                     return _this.$emit('update:page', v);
@@ -16110,7 +16103,7 @@ var __read = undefined && undefined.__read || function (o, n) {
                     return _this.$emit('update:group-desc', v);
                 },
                 'pagination': function pagination(v, old) {
-                    return !Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["deepEqual"])(v, old) && _this.$emit('pagination', v);
+                    return !Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["deepEqual"])(v, old) && _this.$emit('pagination', v);
                 },
                 'current-items': function currentItems(v) {
                     _this.internalCurrentItems = v;
@@ -20689,6 +20682,7 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_6__["default"])(_mixins
         left: Boolean,
         right: Boolean,
         dense: Boolean,
+        size: [Number, String],
         tag: {
             type: String,
             required: false,
@@ -24830,9 +24824,18 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_10__["default"])(_
             return _mixins_selectable__WEBPACK_IMPORTED_MODULE_8__["default"].options.methods.genInput.call(this, 'radio', args);
         },
         genLabel: function genLabel() {
+            var _this = this;
             if (!this.hasLabel) return null;
             return this.$createElement(_VLabel__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                on: { click: this.onChange },
+                on: {
+                    click: function click(e) {
+                        // Prevent label from
+                        // causing the input
+                        // to focus
+                        e.preventDefault();
+                        _this.onChange();
+                    }
+                },
                 attrs: {
                     for: this.computedId
                 },
@@ -25363,6 +25366,7 @@ __webpack_require__.r(__webpack_exports__);
         },
         clearable: Boolean,
         readonly: Boolean,
+        size: [Number, String],
         hover: Boolean,
         value: {
             type: Number,
@@ -28114,7 +28118,7 @@ var __assign = undefined && undefined.__assign || function () {
         genTrend: function genTrend() {
             return this.$createElement('svg', this.setTextColor(this.color, {
                 attrs: __assign({}, this.$attrs, { display: 'block', 'stroke-width': this._lineWidth || 1, viewBox: "0 0 " + this.width + " " + this.totalHeight })
-            }), [this.genGradient(), this.hasLabels && this.genLabels(-2), this.genPath()]);
+            }), [this.genGradient(), this.hasLabels && this.genLabels(-(this._lineWidth / 2)), this.genPath()]);
         }
     },
     render: function render(h) {
@@ -28172,7 +28176,7 @@ function genPoints(values, boundary) {
     var maxValue = Math.max.apply(Math, __spread(values));
     var minValue = Math.min.apply(Math, __spread(values));
     var gridX = (maxX - minX) / (totalValues - 1);
-    var gridY = (maxY - minY) / (maxValue - minValue);
+    var gridY = (maxY - minY) / (maxValue - minValue || 1);
     return values.map(function (value, index) {
         return {
             x: minX + index * gridX,
@@ -28189,6 +28193,8 @@ function genBars(values, boundary) {
     var totalValues = values.length;
     var maxValue = Math.max.apply(Math, __spread(values));
     var minValue = Math.min.apply(Math, __spread(values));
+    if (minValue > 0) minValue = 0;
+    if (maxValue < 0) maxValue = 0;
     var gridX = maxX / totalValues;
     var gridY = (maxY - minY) / (maxValue - minValue);
     var horizonY = maxY - Math.abs(minValue * gridY);
@@ -29535,7 +29541,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_9__["default"])(_m
         },
         genBar: function genBar(items, slider) {
             var _this = this;
-            return this.$createElement(_VTabsBar__WEBPACK_IMPORTED_MODULE_1__["default"], this.setTextColor(this.computedColor, {
+            var data = {
                 staticClass: this.backgroundColor,
                 style: {
                     height: Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["convertToUnit"])(this.height)
@@ -29559,7 +29565,10 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_9__["default"])(_m
                     }
                 },
                 ref: 'items'
-            }), [this.genSlider(slider), items]);
+            };
+            this.setTextColor(this.computedColor, data);
+            this.setBackgroundColor(this.backgroundColor, data);
+            return this.$createElement(_VTabsBar__WEBPACK_IMPORTED_MODULE_1__["default"], data, [this.genSlider(slider), items]);
         },
         genItems: function genItems(items, item) {
             var _this = this;
@@ -29779,6 +29788,18 @@ var __values = undefined && undefined.__values || function (o) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VWindow_VWindow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../VWindow/VWindow */ "./src/components/VWindow/VWindow.ts");
 /* harmony import */ var _VItemGroup_VItemGroup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../VItemGroup/VItemGroup */ "./src/components/VItemGroup/VItemGroup.ts");
+var __assign = undefined && undefined.__assign || function () {
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) {
+                if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 // Extensions
 
 // Types & Components
@@ -29790,6 +29811,23 @@ __webpack_require__.r(__webpack_exports__);
         mandatory: {
             type: Boolean,
             default: false
+        }
+    },
+    computed: {
+        classes: function classes() {
+            return __assign({}, _VWindow_VWindow__WEBPACK_IMPORTED_MODULE_0__["default"].options.computed.classes.call(this), { 'v-tabs-items': true });
+        },
+        isDark: function isDark() {
+            if (this.dark === true) {
+                // explicitly dark
+                return true;
+            } else if (this.light === true) {
+                // explicitly light
+                return false;
+            } else {
+                // inherit from root
+                return this.rootIsDark;
+            }
         }
     },
     methods: {
@@ -31473,8 +31511,8 @@ var __read = undefined && undefined.__read || function (o, n) {
     props: {
         absolute: Boolean,
         bottom: Boolean,
-        dense: Boolean,
         collapse: Boolean,
+        dense: Boolean,
         extended: Boolean,
         extensionHeight: {
             default: 48,
@@ -31488,13 +31526,13 @@ var __read = undefined && undefined.__read || function (o, n) {
             type: [String, Object],
             default: ''
         },
-        tile: {
-            type: Boolean,
-            default: true
-        },
         tag: {
             type: String,
             default: 'header'
+        },
+        tile: {
+            type: Boolean,
+            default: true
         }
     },
     data: function data() {
@@ -31953,12 +31991,12 @@ var __values = undefined && undefined.__values || function (o) {
             default: function _default() {
                 return [];
             }
-        }, dense: Boolean, items: {
+        }, dense: Boolean, filter: Function, hoverable: Boolean, items: {
             type: Array,
             default: function _default() {
                 return [];
             }
-        }, hoverable: Boolean, multipleActive: Boolean, open: {
+        }, multipleActive: Boolean, open: {
             type: Array,
             default: function _default() {
                 return [];
@@ -31966,24 +32004,24 @@ var __values = undefined && undefined.__values || function (o) {
         }, openAll: Boolean, returnObject: {
             type: Boolean,
             default: false
-        }, value: {
-            type: Array,
-            default: function _default() {
-                return [];
-            }
-        }, search: String, filter: Function, selectionType: {
+        }, search: String, selectionType: {
             type: String,
             default: 'leaf',
             validator: function validator(v) {
                 return ['leaf', 'independent'].includes(v);
             }
+        }, value: {
+            type: Array,
+            default: function _default() {
+                return [];
+            }
         } }, _VTreeviewNode__WEBPACK_IMPORTED_MODULE_1__["VTreeviewNodeProps"]),
     data: function data() {
         return {
-            nodes: {},
-            selectedCache: new Set(),
             activeCache: new Set(),
-            openCache: new Set()
+            nodes: {},
+            openCache: new Set(),
+            selectedCache: new Set()
         };
     },
     computed: {
@@ -32337,34 +32375,21 @@ var VTreeviewNodeProps = {
         type: String,
         default: 'v-treeview-node--active'
     },
-    selectable: Boolean,
     color: {
         type: String,
         default: 'primary'
-    },
-    selectedColor: {
-        type: String,
-        default: 'accent'
-    },
-    indeterminateIcon: {
-        type: String,
-        default: '$vuetify.icons.checkboxIndeterminate'
-    },
-    onIcon: {
-        type: String,
-        default: '$vuetify.icons.checkboxOn'
-    },
-    offIcon: {
-        type: String,
-        default: '$vuetify.icons.checkboxOff'
     },
     expandIcon: {
         type: String,
         default: '$vuetify.icons.subgroup'
     },
-    loadingIcon: {
+    indeterminateIcon: {
         type: String,
-        default: '$vuetify.icons.loading'
+        default: '$vuetify.icons.checkboxIndeterminate'
+    },
+    itemChildren: {
+        type: String,
+        default: 'children'
     },
     itemDisabled: {
         type: String,
@@ -32378,15 +32403,28 @@ var VTreeviewNodeProps = {
         type: String,
         default: 'name'
     },
-    itemChildren: {
-        type: String,
-        default: 'children'
-    },
     loadChildren: Function,
+    loadingIcon: {
+        type: String,
+        default: '$vuetify.icons.loading'
+    },
+    offIcon: {
+        type: String,
+        default: '$vuetify.icons.checkboxOff'
+    },
+    onIcon: {
+        type: String,
+        default: '$vuetify.icons.checkboxOn'
+    },
     openOnClick: Boolean,
-    transition: Boolean,
     rounded: Boolean,
-    shaped: Boolean
+    selectable: Boolean,
+    selectedColor: {
+        type: String,
+        default: 'accent'
+    },
+    shaped: Boolean,
+    transition: Boolean
 };
 /* @vue/component */
 /* harmony default export */ __webpack_exports__["default"] = (baseMixins.extend().extend({
@@ -32404,12 +32442,12 @@ var VTreeviewNodeProps = {
         } }, VTreeviewNodeProps),
     data: function data() {
         return {
-            isOpen: false,
-            isSelected: false,
-            isIndeterminate: false,
+            hasLoaded: false,
             isActive: false,
+            isIndeterminate: false,
             isLoading: false,
-            hasLoaded: false
+            isOpen: false,
+            isSelected: false
         };
     },
     computed: {
@@ -32880,7 +32918,7 @@ var __assign = undefined && undefined.__assign || function () {
         next: function next() {
             this.isReverse = this.$vuetify.rtl;
             /* istanbul ignore if */
-            if (!this.hasActiveItems) return;
+            if (!this.hasActiveItems || !this.hasNext) return;
             var nextIndex = this.getNextIndex(this.internalIndex);
             var item = this.items[nextIndex];
             this.internalValue = this.getValue(item, nextIndex);
@@ -32888,7 +32926,7 @@ var __assign = undefined && undefined.__assign || function () {
         prev: function prev() {
             this.isReverse = !this.$vuetify.rtl;
             /* istanbul ignore if */
-            if (!this.hasActiveItems) return;
+            if (!this.hasActiveItems || !this.hasPrev) return;
             var lastIndex = this.getPrevIndex(this.internalIndex);
             var item = this.items[lastIndex];
             this.internalValue = this.getValue(item, lastIndex);
@@ -33739,11 +33777,12 @@ var VExpandXTransition = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_0__["crea
 /*!***********************************************!*\
   !*** ./src/directives/click-outside/index.ts ***!
   \***********************************************/
-/*! exports provided: default */
+/*! exports provided: ClickOutside, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClickOutside", function() { return ClickOutside; });
 function closeConditional() {
     return false;
 }
@@ -33781,7 +33820,7 @@ function directive(e, el, binding) {
         isActive(e) && binding.value && binding.value(e);
     }, 0);
 }
-/* harmony default export */ __webpack_exports__["default"] = ({
+var ClickOutside = {
     // [data-app] may not be found
     // if using bind, inserted makes
     // sure that the root element is
@@ -33804,7 +33843,8 @@ function directive(e, el, binding) {
         app && app.removeEventListener('click', el._clickOutside, true);
         delete el._clickOutside;
     }
-});
+};
+/* harmony default export */ __webpack_exports__["default"] = (ClickOutside);
 
 /***/ }),
 
@@ -33812,23 +33852,25 @@ function directive(e, el, binding) {
 /*!*********************************!*\
   !*** ./src/directives/index.ts ***!
   \*********************************/
-/*! exports provided: resize, ripple, scroll, touch */
+/*! exports provided: ClickOutside, Resize, Ripple, Scroll, Touch */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _click_outside__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./click-outside */ "./src/directives/click-outside/index.ts");
-/* empty/unused harmony star reexport *//* harmony import */ var _resize__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resize */ "./src/directives/resize/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "resize", function() { return _resize__WEBPACK_IMPORTED_MODULE_1__["resize"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ClickOutside", function() { return _click_outside__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _resize__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resize */ "./src/directives/resize/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Resize", function() { return _resize__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
 /* harmony import */ var _ripple__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ripple */ "./src/directives/ripple/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ripple", function() { return _ripple__WEBPACK_IMPORTED_MODULE_2__["ripple"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Ripple", function() { return _ripple__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
 /* harmony import */ var _scroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scroll */ "./src/directives/scroll/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "scroll", function() { return _scroll__WEBPACK_IMPORTED_MODULE_3__["scroll"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Scroll", function() { return _scroll__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
 /* harmony import */ var _touch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./touch */ "./src/directives/touch/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "touch", function() { return _touch__WEBPACK_IMPORTED_MODULE_4__["touch"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Touch", function() { return _touch__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
 
 
@@ -33842,12 +33884,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./src/directives/resize/index.ts ***!
   \****************************************/
-/*! exports provided: resize, default */
+/*! exports provided: Resize, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resize", function() { return resize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Resize", function() { return Resize; });
 function inserted(el, binding) {
     var callback = binding.value;
     var options = binding.options || { passive: true };
@@ -33868,12 +33910,11 @@ function unbind(el) {
     window.removeEventListener('resize', callback, options);
     delete el._onResize;
 }
-var resize = {
+var Resize = {
     inserted: inserted,
     unbind: unbind
 };
-
-/* harmony default export */ __webpack_exports__["default"] = (resize);
+/* harmony default export */ __webpack_exports__["default"] = (Resize);
 
 /***/ }),
 
@@ -33892,12 +33933,12 @@ var resize = {
 /*!****************************************!*\
   !*** ./src/directives/ripple/index.ts ***!
   \****************************************/
-/*! exports provided: ripple, default */
+/*! exports provided: Ripple, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ripple", function() { return ripple; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ripple", function() { return Ripple; });
 /* harmony import */ var _VRipple_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VRipple.sass */ "./src/directives/ripple/VRipple.sass");
 /* harmony import */ var _VRipple_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_VRipple_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
@@ -34128,13 +34169,12 @@ function update(el, binding) {
     var wasEnabled = isRippleEnabled(binding.oldValue);
     updateRipple(el, binding, wasEnabled);
 }
-var ripple = {
+var Ripple = {
     bind: directive,
     unbind: unbind,
     update: update
 };
-
-/* harmony default export */ __webpack_exports__["default"] = (ripple);
+/* harmony default export */ __webpack_exports__["default"] = (Ripple);
 
 /***/ }),
 
@@ -34142,12 +34182,12 @@ var ripple = {
 /*!****************************************!*\
   !*** ./src/directives/scroll/index.ts ***!
   \****************************************/
-/*! exports provided: scroll, default */
+/*! exports provided: Scroll, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scroll", function() { return scroll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Scroll", function() { return Scroll; });
 function inserted(el, binding) {
     var callback = binding.value;
     var options = binding.options || { passive: true };
@@ -34169,12 +34209,11 @@ function unbind(el) {
     target.removeEventListener('scroll', callback, options);
     delete el._onScroll;
 }
-var scroll = {
+var Scroll = {
     inserted: inserted,
     unbind: unbind
 };
-
-/* harmony default export */ __webpack_exports__["default"] = (scroll);
+/* harmony default export */ __webpack_exports__["default"] = (Scroll);
 
 /***/ }),
 
@@ -34182,12 +34221,12 @@ var scroll = {
 /*!***************************************!*\
   !*** ./src/directives/touch/index.ts ***!
   \***************************************/
-/*! exports provided: touch, default */
+/*! exports provided: Touch, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "touch", function() { return touch; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Touch", function() { return Touch; });
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 
 var handleGesture = function handleGesture(wrapper) {
@@ -34279,12 +34318,11 @@ function unbind(el, binding, vnode) {
     });
     delete target._touchHandlers[vnode.context._uid];
 }
-var touch = {
+var Touch = {
     inserted: inserted,
     unbind: unbind
 };
-
-/* harmony default export */ __webpack_exports__["default"] = (touch);
+/* harmony default export */ __webpack_exports__["default"] = (Touch);
 
 /***/ }),
 
@@ -34346,7 +34384,7 @@ var Vuetify = /** @class */function () {
     };
     Vuetify.install = _install__WEBPACK_IMPORTED_MODULE_0__["install"];
     Vuetify.installed = false;
-    Vuetify.version = '2.0.0-beta.5';
+    Vuetify.version = '2.0.0-beta.7';
     return Vuetify;
 }();
 /* harmony default export */ __webpack_exports__["default"] = (Vuetify);
@@ -36527,7 +36565,7 @@ var __assign = undefined && undefined.__assign || function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _directives_scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../directives/scroll */ "./src/directives/scroll/index.ts");
+/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../directives */ "./src/directives/index.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_2__);
@@ -36548,7 +36586,7 @@ __webpack_require__.r(__webpack_exports__);
 /* @vue/component */
 /* harmony default export */ __webpack_exports__["default"] = (vue__WEBPACK_IMPORTED_MODULE_2___default.a.extend({
     name: 'scrollable',
-    directives: { Scroll: _directives_scroll__WEBPACK_IMPORTED_MODULE_0__["default"] },
+    directives: { Scroll: _directives__WEBPACK_IMPORTED_MODULE_0__["Scroll"] },
     props: {
         scrollTarget: String,
         scrollThreshold: [String, Number]
@@ -36700,9 +36738,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     methods: {
         genLabel: function genLabel() {
+            var _this = this;
             var label = _components_VInput__WEBPACK_IMPORTED_MODULE_0__["default"].options.methods.genLabel.call(this);
             if (!label) return label;
-            label.data.on = { click: this.onChange };
+            label.data.on = {
+                click: function click(e) {
+                    // Prevent label from
+                    // causing the input
+                    // to focus
+                    e.preventDefault();
+                    _this.onChange();
+                }
+            };
             return label;
         },
         genInput: function genInput(type, attrs) {
@@ -36782,9 +36829,6 @@ __webpack_require__.r(__webpack_exports__);
     name: 'sizeable',
     props: {
         large: Boolean,
-        size: {
-            type: [Number, String]
-        },
         small: Boolean,
         xLarge: Boolean,
         xSmall: Boolean
@@ -38726,7 +38770,7 @@ function parse(theme, isItem) {
  * Generate the CSS for a base color (.primary)
  */
 var genBaseColor = function genBaseColor(name, value) {
-    return "\n." + name + " {\n  background-color: " + value + " !important;\n  border-color: " + value + " !important;\n}\n." + name + "--text {\n  color: " + value + " !important;\n  caret-color: " + value + " !important;\n}";
+    return "\n.v-application ." + name + " {\n  background-color: " + value + " !important;\n  border-color: " + value + " !important;\n}\n.v-application ." + name + "--text {\n  color: " + value + " !important;\n  caret-color: " + value + " !important;\n}";
 };
 /**
  * Generate the CSS for a variant color (.primary.darken-2)
@@ -38735,7 +38779,7 @@ var genVariantColor = function genVariantColor(name, variant, value) {
     var _a = __read(variant.split(/(\d)/, 2), 2),
         type = _a[0],
         n = _a[1];
-    return "\n." + name + "." + type + "-" + n + " {\n  background-color: " + value + " !important;\n  border-color: " + value + " !important;\n}\n." + name + "--text.text--" + type + "-" + n + " {\n  color: " + value + " !important;\n  caret-color: " + value + " !important;\n}";
+    return "\n.v-application ." + name + "." + type + "-" + n + " {\n  background-color: " + value + " !important;\n  border-color: " + value + " !important;\n}\n.v-application ." + name + "--text.text--" + type + "-" + n + " {\n  color: " + value + " !important;\n  caret-color: " + value + " !important;\n}";
 };
 var genColorVariableName = function genColorVariableName(name, variant) {
     if (variant === void 0) {
@@ -38760,7 +38804,7 @@ function genStyles(theme, cssVar) {
     var variablesCss = '';
     var css = '';
     var aColor = cssVar ? genColorVariable('anchor') : anchor;
-    css += "a { color: " + aColor + "; }";
+    css += ".v-application a { color: " + aColor + "; }";
     cssVar && (variablesCss += "  " + genColorVariableName('anchor') + ": " + anchor + ";\n");
     for (var i = 0; i < colors.length; ++i) {
         var name = colors[i];
@@ -44796,12 +44840,6 @@ var _default = {
         mobileCaption: 'Requests\' Status',
         login: true,
         icon: 'gavel'
-      }, {
-        to: 'Settings',
-        caption: 'Settings',
-        mobileCaption: 'Profile Settings',
-        login: true,
-        icon: 'settings'
       }]
     };
   },
@@ -44812,6 +44850,9 @@ var _default = {
       return this.links_raw.filter(function (link) {
         return link.login ? _this.user : true;
       });
+    },
+    mobileNav: function mobileNav() {
+      return window.innerWidth < 600;
     }
   })
 };
@@ -44837,13 +44878,14 @@ exports.default = _default;
           attrs: {
             fixed: "",
             color: _vm.$vuetify.theme.dark ? "" : "primary",
+            "hide-on-scroll": _vm.mobileNav,
             dark: "",
             app: ""
           }
         },
         [
           _c("v-app-bar-nav-icon", {
-            staticClass: "hidden-sm-and-up",
+            staticClass: "hidden-md-and-up",
             on: {
               click: function($event) {
                 _vm.drawer = !_vm.drawer
@@ -44861,7 +44903,7 @@ exports.default = _default;
           _vm._v(" "),
           _c(
             "v-toolbar-items",
-            { staticClass: "hidden-xs-only" },
+            { staticClass: "nav-item--desktop\n      hidden-sm-and-down" },
             _vm._l(_vm.links, function(link) {
               return _c(
                 "v-btn",
@@ -44878,7 +44920,7 @@ exports.default = _default;
           _vm._v(" "),
           _c(
             "v-btn",
-            { staticClass: "hidden-xs-only ml-3", attrs: { outlined: "" } },
+            { staticClass: "hidden-sm-and-down ml-3", attrs: { outlined: "" } },
             [
               _vm._v(
                 "\n      " + _vm._s(_vm.user ? "Logout" : "Login") + "\n    "
@@ -44892,7 +44934,12 @@ exports.default = _default;
       _c(
         "v-navigation-drawer",
         {
-          attrs: { fixed: "", temporary: "" },
+          attrs: {
+            color:
+              "background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);",
+            fixed: "",
+            temporary: ""
+          },
           model: {
             value: _vm.drawer,
             callback: function($$v) {
@@ -44909,14 +44956,14 @@ exports.default = _default;
                 ? [
                     _vm.user
                       ? _c(
-                          "v-list-tile",
-                          { attrs: { "two-line": "", avatar: "" } },
+                          "v-list-item",
+                          { attrs: { "two-line": "" } },
                           [
                             _c(
-                              "v-list-tile-content",
+                              "v-list-item-content",
                               [
                                 _c(
-                                  "v-list-tile-title",
+                                  "v-list-item-title",
                                   { staticClass: "title" },
                                   [
                                     _vm._v(
@@ -44927,7 +44974,7 @@ exports.default = _default;
                                   ]
                                 ),
                                 _vm._v(" "),
-                                _c("v-list-tile-sub-title", [
+                                _c("v-list-item-subtitle", [
                                   _vm._v(
                                     "\n              " +
                                       _vm._s(
@@ -44948,11 +44995,10 @@ exports.default = _default;
                   ]
                 : [
                     _c(
-                      "v-list-tile",
-                      { attrs: { avatar: "" } },
+                      "v-list-item",
                       [
                         _c(
-                          "v-list-tile-avatar",
+                          "v-list-item-avatar",
                           [
                             _c("v-icon", [
                               _vm._v("\n              mdi-login\n            ")
@@ -44961,9 +45007,15 @@ exports.default = _default;
                           1
                         ),
                         _vm._v(" "),
-                        _c("v-list-tile-content", { staticClass: "title" }, [
-                          _vm._v("\n            Login\n          ")
-                        ])
+                        _c(
+                          "v-list-item-content",
+                          [
+                            _c("v-list-item-title", [
+                              _vm._v("\n              Login\n            ")
+                            ])
+                          ],
+                          1
+                        )
                       ],
                       1
                     )
@@ -44973,11 +45025,11 @@ exports.default = _default;
               _vm._v(" "),
               _vm._l(_vm.links, function(link) {
                 return _c(
-                  "v-list-tile",
-                  { key: link.to, attrs: { avatar: "" } },
+                  "v-list-item",
+                  { key: link.to, attrs: { to: link.to } },
                   [
                     _c(
-                      "v-list-tile-avatar",
+                      "v-list-item-avatar",
                       [
                         _c("v-icon", [
                           _vm._v(
@@ -44991,9 +45043,9 @@ exports.default = _default;
                     ),
                     _vm._v(" "),
                     _c(
-                      "v-list-tile-content",
+                      "v-list-item-content",
                       [
-                        _c("v-list-tile-title", [
+                        _c("v-list-item-title", [
                           _vm._v(
                             "\n            " +
                               _vm._s(link.mobileCaption) +
@@ -45013,11 +45065,10 @@ exports.default = _default;
                     _c("v-divider"),
                     _vm._v(" "),
                     _c(
-                      "v-list-tile",
-                      { attrs: { avatar: "" } },
+                      "v-list-item",
                       [
                         _c(
-                          "v-list-tile-avatar",
+                          "v-list-item-avatar",
                           [
                             _c("v-icon", [
                               _vm._v("\n              mdi-logout\n            ")
@@ -45026,9 +45077,15 @@ exports.default = _default;
                           1
                         ),
                         _vm._v(" "),
-                        _c("v-list-tile-content", [
-                          _vm._v("\n            Logout\n          ")
-                        ])
+                        _c(
+                          "v-list-item-content",
+                          [
+                            _c("v-list-item-title", [
+                              _vm._v("\n              Logout\n            ")
+                            ])
+                          ],
+                          1
+                        )
                       ],
                       1
                     )
@@ -51888,37 +51945,9 @@ var _default = {
     requestAnimationFrame(this.watcher);
 
     if (this.value && this.value instanceof Date) {
-      this.hour = value.getHours();
-      this.minute = value.getMinutes();
+      this.hour = this.value.getHours();
+      this.minute = this.value.getMinutes();
     }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    var hour = document.querySelector('.hour');
-    var minute = document.querySelector('.minute');
-    hour.addEventListener('wheel', function (e) {
-      e.preventDefault();
-
-      var wheelDown = _this.determineScrollDirection(e);
-
-      if (wheelDown) {
-        _this.decrementHour();
-      } else {
-        _this.incrementHour();
-      }
-    });
-    minute.addEventListener('wheel', function (e) {
-      e.preventDefault();
-
-      var wheelDown = _this.determineScrollDirection(e);
-
-      if (wheelDown) {
-        _this.decrementMinute();
-      } else {
-        _this.incrementMinute();
-      }
-    });
   },
   watch: {
     time: function time() {
@@ -51933,8 +51962,25 @@ var _default = {
     }
   },
   methods: {
-    test: function test() {
-      console.log('test');
+    hourWheel: function hourWheel(e) {
+      e.preventDefault();
+      var dir = e.deltaY;
+
+      if (dir < 0) {
+        this.incrementHour();
+      } else if (dir > 0) {
+        this.decrementHour();
+      }
+    },
+    minuteWheel: function minuteWheel(e) {
+      e.preventDefault();
+      var dir = e.deltaY;
+
+      if (dir < 0) {
+        this.incrementMinute();
+      } else if (dir > 0) {
+        this.decrementMinute();
+      }
     },
     clear: function clear() {
       this.hour = null;
@@ -51964,17 +52010,6 @@ var _default = {
       if (this.minusMinute) {
         this.decrementMinute();
       }
-    },
-    determineScrollDirection: function determineScrollDirection(e) {
-      var delta;
-
-      if (e.wheelDelta) {
-        delta = e.wheelDelta;
-      } else {
-        delta = -1 * e.deltaY;
-      }
-
-      return delta < 0;
     },
     setDefaultHour: function setDefaultHour() {
       this.hour = new Date().getHours();
@@ -52127,8 +52162,8 @@ exports.default = _default;
               _c(
                 "v-layout",
                 {
-                  staticClass: "hour",
-                  attrs: { column: "", "align-center": "" }
+                  attrs: { column: "", "align-center": "" },
+                  on: { wheel: _vm.hourWheel }
                 },
                 [
                   _c(
@@ -52156,7 +52191,7 @@ exports.default = _default;
                   ),
                   _vm._v(" "),
                   _c("v-text-field", {
-                    staticClass: "display-2 time pt-0",
+                    staticClass: "display-2 time pt-0 mb-2",
                     attrs: {
                       "hide-details": "",
                       type: "number",
@@ -52213,8 +52248,8 @@ exports.default = _default;
               _c(
                 "v-layout",
                 {
-                  staticClass: "minute",
-                  attrs: { column: "", "align-center": "" }
+                  attrs: { column: "", "align-center": "" },
+                  on: { wheel: _vm.minuteWheel }
                 },
                 [
                   _c(
@@ -52242,7 +52277,7 @@ exports.default = _default;
                   ),
                   _vm._v(" "),
                   _c("v-text-field", {
-                    staticClass: "display-2 time pt-0",
+                    staticClass: "display-2 time pt-0 mb-2",
                     attrs: {
                       "hide-details": "",
                       type: "number",
@@ -52499,11 +52534,11 @@ var _default = {
       default: ''
     },
     min: {
-      type: String,
+      type: Date,
       default: null
     },
     max: {
-      type: String,
+      type: Date,
       default: null
     },
     clearable: {
@@ -52534,7 +52569,7 @@ var _default = {
     };
   },
   created: function created() {
-    if (this.value) {
+    if (this.value && this.value instanceof Date) {
       this.date = (0, _dateFns.format)(this.value, 'YYYY-MM-D');
       this.time = "".concat(this.value.getHours(), ":").concat(this.value.getMinutes());
     }
@@ -52543,8 +52578,20 @@ var _default = {
     show: function show() {
       return window.innerWidth < 600;
     },
+    minDate: function minDate() {
+      if (this.min && this.min instanceof Date) {
+        var date = this.min;
+        date.setDate(date.getDate() - 1);
+        return date.toISOString();
+      }
+
+      return null;
+    },
+    maxDate: function maxDate() {
+      return this.max && this.max instanceof Date ? this.max.toISOString() : null;
+    },
     formattedDate: function formattedDate() {
-      return this.value ? (0, _dateFns.format)(this.value, 'dddd, D MMMM YYYY --- HH:mm', {
+      return this.value ? (0, _dateFns.format)(this.value, 'dddd, D MMMM YYYY -- HH:mm', {
         locale: _id.default
       }) : '';
     },
@@ -52771,8 +52818,8 @@ exports.default = _default;
                                   "no-title": "",
                                   color: "primary",
                                   locale: "id",
-                                  min: _vm.min ? _vm.min : undefined,
-                                  max: _vm.max ? _vm.max : undefined,
+                                  min: _vm.minDate,
+                                  max: _vm.maxDate,
                                   "show-current": false
                                 },
                                 model: {
@@ -52926,8 +52973,8 @@ exports.default = _default;
                                       color: "primary",
                                       locale: "id",
                                       "full-width": "",
-                                      min: _vm.min ? _vm.min : undefined,
-                                      max: _vm.max ? _vm.max : undefined,
+                                      min: _vm.minDate,
+                                      max: _vm.maxDate,
                                       "show-current": false
                                     },
                                     model: {
@@ -53132,45 +53179,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default = {
   mixins: [_color.default, _input.default],
   components: {
@@ -53185,7 +53193,7 @@ var _default = {
       endTime: null,
       name: "",
       desc: "",
-      avail: null,
+      avail: 0,
       startTimeRules: [function (v) {
         return !!v || "Waktu mulai harus diisi";
       }],
@@ -53242,347 +53250,260 @@ exports.default = _default;
     { staticClass: "wrapper", attrs: { fluid: "" } },
     [
       _c(
-        "v-layout",
-        { staticClass: "divider", attrs: { row: "" } },
+        "v-form",
+        {
+          staticClass: "form",
+          model: {
+            value: _vm.form,
+            callback: function($$v) {
+              _vm.form = $$v
+            },
+            expression: "form"
+          }
+        },
         [
           _c(
-            "v-flex",
-            { attrs: { xs12: "", md8: "" } },
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
             [
+              _c("v-flex", { staticClass: "mb-4", attrs: { xs12: "" } }, [
+                _c(
+                  "h1",
+                  {
+                    staticClass: "display-1 has-font-open-sans text-xs-center"
+                  },
+                  [_vm._v("\n          Formulir Acara\n        ")]
+                )
+              ]),
+              _vm._v(" "),
               _c(
-                "v-form",
-                {
-                  staticClass: "form",
-                  model: {
-                    value: _vm.form,
-                    callback: function($$v) {
-                      _vm.form = $$v
-                    },
-                    expression: "form"
-                  }
-                },
+                "v-flex",
+                { attrs: { xs12: "", sm6: "" } },
                 [
                   _c(
-                    "v-layout",
-                    { attrs: { row: "", wrap: "" } },
+                    "label",
+                    { staticClass: "field-label", attrs: { for: "room" } },
                     [
-                      _c(
-                        "v-flex",
-                        {
-                          staticClass: "display-1 has-font-open-sans mb-4",
-                          attrs: { xs12: "" }
-                        },
-                        [_vm._v("\n            Formulir Acara\n          ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", sm6: "" } },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "field-label",
-                              attrs: { for: "room" }
-                            },
-                            [
-                              _vm._v("\n              Ruangan\n              "),
-                              _c("span", { style: _vm.textColor("danger") }, [
-                                _vm._v("*")
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-select", {
-                            attrs: {
-                              id: "room",
-                              items: _vm.roomList,
-                              color: "info",
-                              solo: "",
-                              rules: _vm.roomRules
-                            },
-                            model: {
-                              value: _vm.room,
-                              callback: function($$v) {
-                                _vm.room = $$v
-                              },
-                              expression: "room"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-flex", {
-                        staticClass: "hidden-xs-only",
-                        attrs: { sm6: "" }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", sm6: "" } },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "field-label",
-                              on: {
-                                click: function($event) {
-                                  return _vm.$refs.startTime.focus()
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n              Waktu Mulai\n              "
-                              ),
-                              _c("span", { style: _vm.textColor("danger") }, [
-                                _vm._v("*")
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("datetimepicker", {
-                            ref: "startTime",
-                            attrs: {
-                              min: new Date().toISOString(),
-                              max: _vm.endTime
-                                ? _vm.endTime.toISOString()
-                                : undefined,
-                              clearable: "",
-                              rules: _vm.startTimeRules
-                            },
-                            model: {
-                              value: _vm.startTime,
-                              callback: function($$v) {
-                                _vm.startTime = $$v
-                              },
-                              expression: "startTime"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "", sm6: "" } },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "field-label",
-                              on: {
-                                click: function($event) {
-                                  return _vm.$refs.endTime.focus()
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n              Waktu Selesai\n              "
-                              ),
-                              _c("span", { style: _vm.textColor("danger") }, [
-                                _vm._v("*")
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("datetimepicker", {
-                            ref: "endTime",
-                            attrs: {
-                              min: _vm.startTime
-                                ? _vm.startTime.toISOString()
-                                : new Date().toISOString(),
-                              clearable: "",
-                              rules: _vm.endTimeRules
-                            },
-                            model: {
-                              value: _vm.endTime,
-                              callback: function($$v) {
-                                _vm.endTime = $$v
-                              },
-                              expression: "endTime"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-flex", { attrs: { xs12: "" } }, [
-                        _c(
-                          "p",
-                          [
-                            _vm._v(
-                              "\n              Keterangan:\n              "
-                            ),
-                            _vm.avail === 0
-                              ? [
-                                  _vm._v(
-                                    "Jadwal yang diajukan bentrok dengan acara lain"
-                                  )
-                                ]
-                              : _vm.avail === 1
-                              ? [
-                                  _vm._v(
-                                    "Jadwal yang diajukan tersedia untuk digunakan"
-                                  )
-                                ]
-                              : _vm.avail === 2
-                              ? [
-                                  _vm._v(
-                                    "Jadwal yang diajukan tidak valid, mohon periksa kembali masukan anda"
-                                  )
-                                ]
-                              : _vm._e()
-                          ],
-                          2
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "" } },
-                        [_c("v-divider")],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "" } },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "field-label",
-                              attrs: { for: "name" }
-                            },
-                            [
-                              _vm._v(
-                                "\n              Nama Acara\n              "
-                              ),
-                              _c("span", { style: _vm.textColor("danger") }, [
-                                _vm._v("*")
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-text-field", {
-                            attrs: {
-                              id: "name",
-                              solo: "",
-                              counter: "50",
-                              rules: _vm.nameRules
-                            },
-                            model: {
-                              value: _vm.name,
-                              callback: function($$v) {
-                                _vm.name = $$v
-                              },
-                              expression: "name"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "" } },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "field-label",
-                              attrs: { for: "desc" }
-                            },
-                            [
-                              _vm._v(
-                                "\n              Deskripsi Acara\n              "
-                              ),
-                              _c("span", { style: _vm.textColor("danger") }, [
-                                _vm._v("*")
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-textarea", {
-                            attrs: {
-                              id: "desc",
-                              solo: "",
-                              counter: "100",
-                              rules: _vm.descRules
-                            },
-                            model: {
-                              value: _vm.desc,
-                              callback: function($$v) {
-                                _vm.desc = $$v
-                              },
-                              expression: "desc"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "" } },
-                        [
-                          _c("v-btn", { attrs: { color: "primary" } }, [
-                            _vm._v("Submit")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
+                      _vm._v("\n          Ruangan"),
+                      _c("span", { style: _vm.textColor("danger") }, [
+                        _vm._v("*")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    attrs: {
+                      id: "room",
+                      items: _vm.roomList,
+                      color: "info",
+                      solo: "",
+                      rules: _vm.roomRules
+                    },
+                    model: {
+                      value: _vm.room,
+                      callback: function($$v) {
+                        _vm.room = $$v
+                      },
+                      expression: "room"
+                    }
+                  })
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            {
-              staticClass: "hidden-xs-only sticky-container",
-              attrs: { md4: "" }
-            },
-            [
+              ),
+              _vm._v(" "),
+              _c("v-flex", {
+                staticClass: "hidden-xs-only",
+                attrs: { sm6: "" }
+              }),
+              _vm._v(" "),
               _c(
-                "v-card",
-                { staticClass: "pa-2 sticky", attrs: { raised: "" } },
+                "v-flex",
+                { attrs: { xs12: "", sm6: "" } },
                 [
-                  _c("v-card-title", { staticClass: "disclaimer-title" }, [
-                    _c(
-                      "h1",
-                      {
-                        staticClass:
-                          "headline \n            has-font-open-sans \n            text-uppercase \n            mb-4"
-                      },
-                      [_vm._v("\n            Disclaimer\n          ")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("v-card-text", [
-                    _c("ol", [
-                      _c("li", [
-                        _vm._v(
-                          "\n              Pastikan bahwa jadwal yang diajukan tidak bentrok dengan jadwal kelas\n            "
-                        )
+                  _c(
+                    "label",
+                    {
+                      staticClass: "field-label",
+                      on: {
+                        click: function($event) {
+                          return _vm.$refs.startTime.focus()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v("\n          Waktu Mulai"),
+                      _c("span", { style: _vm.textColor("danger") }, [
+                        _vm._v("*")
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("p", { style: _vm.textColor("warning") }, [
-                      _vm._v(
-                        "\n            Apabila acara yang diajukan melanggar aturan diatas,\n            administrator berhak untuk membatalkan acara secara\n            sepihak tanpa pemberitahuan terlebih dahulu\n          "
-                      )
-                    ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("datetimepicker", {
+                    ref: "startTime",
+                    attrs: {
+                      min: new Date(),
+                      max: _vm.endTime,
+                      clearable: "",
+                      rules: _vm.startTimeRules
+                    },
+                    model: {
+                      value: _vm.startTime,
+                      callback: function($$v) {
+                        _vm.startTime = $$v
+                      },
+                      expression: "startTime"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs12: "", sm6: "" } },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "field-label",
+                      on: {
+                        click: function($event) {
+                          return _vm.$refs.endTime.focus()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v("\n          Waktu Selesai"),
+                      _c("span", { style: _vm.textColor("danger") }, [
+                        _vm._v("*")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("datetimepicker", {
+                    ref: "endTime",
+                    attrs: {
+                      min: _vm.startTime ? _vm.startTime : new Date(),
+                      clearable: "",
+                      rules: _vm.endTimeRules
+                    },
+                    model: {
+                      value: _vm.endTime,
+                      callback: function($$v) {
+                        _vm.endTime = $$v
+                      },
+                      expression: "endTime"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs12: "" } }, [
+                _c(
+                  "p",
+                  [
+                    _vm._v("\n          Keterangan:\n          "),
+                    _vm.avail === 0
+                      ? [
+                          _vm._v(
+                            "Jadwal yang diajukan bentrok dengan acara lain"
+                          )
+                        ]
+                      : _vm.avail === 1
+                      ? [
+                          _vm._v(
+                            "Jadwal yang diajukan tersedia untuk digunakan"
+                          )
+                        ]
+                      : _vm.avail === 2
+                      ? [
+                          _vm._v(
+                            "Jadwal yang diajukan tidak valid, mohon periksa kembali masukan anda"
+                          )
+                        ]
+                      : _vm._e()
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs12: "" } }, [_c("v-divider")], 1),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs12: "" } },
+                [
+                  _c(
+                    "label",
+                    { staticClass: "field-label", attrs: { for: "name" } },
+                    [
+                      _vm._v("\n          Nama Acara"),
+                      _c("span", { style: _vm.textColor("danger") }, [
+                        _vm._v("*")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: {
+                      id: "name",
+                      solo: "",
+                      counter: "50",
+                      rules: _vm.nameRules
+                    },
+                    model: {
+                      value: _vm.name,
+                      callback: function($$v) {
+                        _vm.name = $$v
+                      },
+                      expression: "name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs12: "" } },
+                [
+                  _c(
+                    "label",
+                    { staticClass: "field-label", attrs: { for: "desc" } },
+                    [
+                      _vm._v("\n          Deskripsi Acara"),
+                      _c("span", { style: _vm.textColor("danger") }, [
+                        _vm._v("*")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-textarea", {
+                    attrs: {
+                      id: "desc",
+                      solo: "",
+                      counter: "100",
+                      rules: _vm.descRules
+                    },
+                    model: {
+                      value: _vm.desc,
+                      callback: function($$v) {
+                        _vm.desc = $$v
+                      },
+                      expression: "desc"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs12: "" } },
+                [
+                  _c("v-btn", { attrs: { color: "primary" } }, [
+                    _vm._v("Submit")
                   ])
                 ],
                 1
@@ -54148,7 +54069,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52022" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52245" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

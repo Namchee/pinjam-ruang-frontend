@@ -5,7 +5,6 @@
       :color='$vuetify.theme.dark ? "" : "primary"'
       :hide-on-scroll='mobileNav'
       dark
-      app
     >
       <v-app-bar-nav-icon
         class="hidden-md-and-up" 
@@ -17,32 +16,106 @@
           font-weight-bold"
         >
         pinjam-ruang
-        </v-toolbar-title>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="nav-item--desktop
-        hidden-sm-and-down"
+        hidden-sm-and-down
+        mr-3"
       >
         <v-btn 
           v-for='link in links'
-          class='btn__nav-link' 
-          :ripple='false' 
+          class='btn__nav-link text-uppercase' 
           :key='link.to'
           text
           :to='link.to'
+          :ripple='false'
         >
         {{ link.caption }}
         </v-btn>
       </v-toolbar-items>
-      <v-btn
-        outlined
-        class='hidden-sm-and-down ml-3'
-      >
-        {{ user ? 'Logout' : 'Login' }}
-      </v-btn>
+      <template v-if='user'>
+        <v-menu
+          v-model='profile'
+          offset-y
+          nudge-bottom="10"
+          :close-on-content-click='false'
+        >
+          <template #activator='{ on }'>
+            <v-btn text fab small v-on='on'>
+              <v-icon>
+                person
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-card class="profile" outlined flat>
+            <v-card-text class="pa-0">
+              <v-list class="py-0">
+                <v-list-item class="py-2">
+                  <v-list-item-avatar>
+                    <v-avatar size="48" color="primary white--text">
+                      <template v-if='user.avatar'>
+                        <img :src='user.avatar' :alt='user.name' />
+                      </template>
+                      <template v-else>
+                        <span class="title">
+                          {{ userAlias }}
+                        </span>
+                      </template>
+                    </v-avatar>
+                  </v-list-item-avatar>
+                  <v-list-item-content>
+                    <v-list-item-title class="title">
+                      {{ user.name }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-divider></v-divider>
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon>
+                      mdi-weather-night
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Dark Mode
+                    </v-list-item-title>
+                  </v-list-item-content>
+                  <v-list-item-action>
+                    <v-switch color="info">
+
+                    </v-switch>
+                  </v-list-item-action>
+                </v-list-item>
+                <v-list-item @click=''>
+                  <v-list-item-icon>
+                    <v-icon>
+                      mdi-logout
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      <span class="subtitle-1">
+                        Logout
+                      </span>
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-card-text>
+          </v-card>
+        </v-menu>
+      </template>
+      <template v-else>
+        <v-btn
+          outlined
+          class="hidden-sm-and-down ml-2">
+          Logout
+        </v-btn>
+      </template>
     </v-app-bar>
 
     <v-navigation-drawer
-      color="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);"
       v-model='drawer'
       fixed
       temporary
@@ -117,23 +190,12 @@
 </template>
 
 <script>
-import colorMixin from "./../mixins/color";
 import { mapState, mapGetters } from 'vuex';
 
 export default {
-  props: {
-    height: {
-      type: Number,
-      default: 10,
-    }
-  },
-
-  mixins: [
-    colorMixin
-  ],
-
   data: function() {
     return {
+      profile: false,
       drawer: false,
 
       links_raw: [
@@ -179,6 +241,15 @@ export default {
 
     mobileNav: function() {
       return window.innerWidth < 600;
+    },
+
+    userAlias: function() {
+      if (this.user && this.user.name) {
+        const username = this.user.name.split(' ');
+        return `${username[0].substring(0, 1)}${username[1].substring(0, 1)}`;
+      }
+
+      return '';
     }
   },
 };
@@ -234,6 +305,14 @@ export default {
 }
 
 .v-list-item--active.theme--dark {
-  color: hsl(0, 0, 96%); 
+  &::before {
+    background-color: rgba(255, 255, 255, 0.350); 
+  }
+
+  color: hsl(0, 0, 96%);
+}
+
+.profile--active {
+  box-shadow: 0 0 2.5px 3.5px rgba(255, 255, 255, 0.4);
 }
 </style>

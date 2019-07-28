@@ -2,8 +2,8 @@
   <v-container fluid class="wrapper">
     <v-form class="form" v-model='form'>
       <v-layout row wrap>
-        <v-flex xs12 class="mb-4">
-          <h1 class="display-1 has-font-open-sans text-xs-center">
+        <v-flex xs12 class="mb-5">
+          <h1 class="display-1 has-font-lato text-xs-center">
             Formulir Acara
           </h1>
         </v-flex>
@@ -17,7 +17,7 @@
             v-model='room' 
             solo 
             :rules='roomRules'
-            ></v-select>
+          ></v-select>
         </v-flex>
         <v-flex sm6 class="hidden-xs-only"></v-flex>
         <v-flex xs12 sm6>
@@ -101,14 +101,16 @@ export default {
   data: function() {
     return {
       room: null,
-      roomList: ["Ruang 9123"],
+      roomList: [
+        'Ruang 9123',
+      ],
 
       form: null,
 
       startTime: null,
       endTime: null,
-      name: "",
-      desc: "",
+      name: '',
+      desc: '',
       avail: 0,
 
       startTimeRules: [v => !!v || "Waktu mulai harus diisi"],
@@ -149,7 +151,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  padding: 4rem 17.5rem;
+  padding: 2rem 17.5rem;
 
   & > .form > .layout > .flex {
     padding: .4rem 2rem;
@@ -188,7 +190,7 @@ export default {
 
 @media screen and (min-width: 1905px) {
   .wrapper {
-    padding: 4rem 30rem;
+    padding: 3rem 30rem;
 
     & > .form > .layout > .flex {
       padding: .75rem 2.5rem;

@@ -20,8 +20,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar {
+  height: 5rem;
+}
+
 .content {
-  //padding-top: 10vh;
   overflow: auto;
 }
 

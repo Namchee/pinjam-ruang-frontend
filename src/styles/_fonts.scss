@@ -1,20 +1,11 @@
-@import '~typeface-roboto';
-@import '~typeface-open-sans';
 @import '~typeface-pt-mono';
+@import '~typeface-lato';
+@import '~material-design-icons-iconfont';
+@import '~@mdi/font/scss/materialdesignicons';
 
-.has-font-roboto {
-    font-family: 'Roboto',
-        'Helvetica Neue',
-        'Segoe UI',
-        Tahoma,
-        Geneva,
-        Verdana,
-        sans-serif !important;
-}
 
-.has-font-open-sans {
-    font-family: 'Open Sans', 
-        sans-serif !important;
+.has-font-lato {
+    font-family: 'Lato', Arial, Helvetica, sans-serif !important;
 }
 
 .has-font-pt {

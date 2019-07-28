@@ -35,8 +35,33 @@
     padding: 0 !important;
 }
 
+.v-btn {
+    font-size: 1rem;
+    text-transform: unset;
+}
+
 .v-btn.btn__nav-link {
     &:before {
         background-color: unset;
     }
+}
+
+.v-application {
+    .display-1, .display-2 {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    }
+}
+
+// Chrome time-picker fix
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// Mozzila time-picker fix
+input[type="number"] {
+    text-align: center;
+    -moz-appearance: textfield;
+    max-height: unset;
 }

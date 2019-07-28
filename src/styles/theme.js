@@ -1,9 +1,9 @@
 export const theme = {
-  dark: true,
+  dark: false,
   themes: {
     light: {
       'primary': '#13abea',
-      'secondary': '#00b9ae',
+      'secondary': '#ff9800',
       'tertiary': '#02182b',
       'danger': '#b00020',
       'info': '#2196f3',
